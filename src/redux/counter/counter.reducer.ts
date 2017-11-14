@@ -1,8 +1,8 @@
 import { Action } from '@ngrx/store';
 
-import { PlusAction, INCREMENT, DECREMENT, PLUS } from './counter.actions';
+import { INCREMENT, DECREMENT, PLUS, RESET, AllActions } from './counter.actions';
 
-export function counterReducer(state: number = 102, action: Action): number {
+export function counterReducer(state: number = 102, action: AllActions): number {
   if (action === null) {
     return state;
   }
@@ -12,7 +12,9 @@ export function counterReducer(state: number = 102, action: Action): number {
     case DECREMENT:
       return state - 1;
     case PLUS:
-      return state + (<PlusAction>action).payload;
+      return state + action.payload;
+    case RESET:
+      return 0;
     default:
       return state;
   }

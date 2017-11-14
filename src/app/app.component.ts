@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store, Action } from '@ngrx/store';
 
 import { AppState } from './../redux/app.state';
-import { INCREMENT } from '../redux/counter/counter.actions';
+import { IncrementAction } from '../redux/counter/counter.actions';
 
 @Component({
   selector: 'app-root',
@@ -25,9 +25,7 @@ export class AppComponent {
 
   increment() {
     console.log('increment');
-    const action: Action = {
-      type: INCREMENT
-    };
+    const action = new IncrementAction();
     this.store.dispatch(action);
   }
 
